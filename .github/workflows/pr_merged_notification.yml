@@ -1,0 +1,106 @@
+name: PR Merged Notification
+
+on:
+  pull_request:
+    types: [closed]
+
+jobs:
+  notify-merge:
+    name: Send Slack Notification on Merge
+    runs-on: ubuntu-22.04
+    # Only run if the PR was actually merged (not just closed)
+    if: github.event.pull_request.merged == true
+    
+    steps:
+      - name: Send Slack Notification
+        run: |
+          SLACK_WEBHOOK_URL="${{ secrets.SLACK_WEBHOOK_URL }}"
+          
+          # Exit gracefully if no webhook configured
+          if [ -z "$SLACK_WEBHOOK_URL" ]; then
+            echo "No Slack webhook configured, skipping notification"
+            exit 0
+          fi
+          
+          # Get PR details
+          PR_NUMBER="${{ github.event.pull_request.number }}"
+          PR_TITLE="${{ github.event.pull_request.title }}"
+          PR_URL="${{ github.event.pull_request.html_url }}"
+          PR_AUTHOR="${{ github.event.pull_request.user.login }}"
+          MERGED_BY="${{ github.event.pull_request.merged_by.login }}"
+          REPO_NAME="${{ github.repository }}"
+          
+          # Check if PR had high-risk label or was flagged (you can customize this)
+          # For now, we'll notify on all merges
+          
+          # Create Slack message payload
+          cat > /tmp/slack_payload.json <<EOF
+          {
+            "blocks": [
+              {
+                "type": "header",
+                "text": {
+                  "type": "plain_text",
+                  "text": "✅ Pull Request Merged",
+                  "emoji": true
+                }
+              },
+              {
+                "type": "section",
+                "fields": [
+                  {
+                    "type": "mrkdwn",
+                    "text": "*Repository:*\n$REPO_NAME"
+                  },
+                  {
+                    "type": "mrkdwn",
+                    "text": "*PR #:*\n<$PR_URL|#$PR_NUMBER>"
+                  }
+                ]
+              },
+              {
+                "type": "section",
+                "fields": [
+                  {
+                    "type": "mrkdwn",
+                    "text": "*Author:*\n$PR_AUTHOR"
+                  },
+                  {
+                    "type": "mrkdwn",
+                    "text": "*Merged by:*\n$MERGED_BY"
+                  }
+                ]
+              },
+              {
+                "type": "section",
+                "text": {
+                  "type": "mrkdwn",
+                  "text": "*Title:*\n$PR_TITLE"
+                }
+              },
+              {
+                "type": "actions",
+                "elements": [
+                  {
+                    "type": "button",
+                    "text": {
+                      "type": "plain_text",
+                      "text": "View PR",
+                      "emoji": true
+                    },
+                    "url": "$PR_URL",
+                    "style": "primary"
+                  }
+                ]
+              }
+            ]
+          }
+          EOF
+          
+          # Send to Slack
+          curl -X POST \
+            -H 'Content-type: application/json' \
+            --data @/tmp/slack_payload.json \
+            "$SLACK_WEBHOOK_URL"
+          
+          echo "Merge notification sent to Slack"
