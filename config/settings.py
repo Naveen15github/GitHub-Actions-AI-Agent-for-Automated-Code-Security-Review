@@ -21,7 +21,7 @@ class Settings:
 
     # ── OpenRouter ────────────────────────────────────────────────────────────
     openrouter_api_keys: List[str] = field(default_factory=list)
-    openrouter_model: str = "nvidia/llama-3.1-nemotron-ultra-253b-v1:free"
+    openrouter_model: str = "nvidia/nemotron-3-ultra-550b-a55b:free"
     openrouter_base_url: str = "https://openrouter.ai/api/v1/chat/completions"
     openrouter_http_referer: str = "https://github.com/ai-code-reviewer"
     openrouter_app_title: str = "GitHub AI Code Reviewer"
