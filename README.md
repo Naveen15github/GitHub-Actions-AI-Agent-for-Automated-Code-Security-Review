@@ -1,5 +1,7 @@
 # 🛡️ GitHub Actions AI Agent for Automated Code Security Review
 
+![Pull Requests Page](https://github.com/Naveen15github/GitHub-Actions-AI-Agent-for-Automated-Code-Security-Review/blob/32054fa8699538886c2db9951d73f31139253692/Architectrue%20Diagram.png)
+
 > An autonomous AI-powered security agent that automatically reviews every Pull Request for vulnerabilities, posts intelligent feedback directly on GitHub, and sends real-time Slack alerts — all without any human intervention.
 
 [![Python](https://img.shields.io/badge/Python-3.11+-blue?logo=python)](https://python.org)
