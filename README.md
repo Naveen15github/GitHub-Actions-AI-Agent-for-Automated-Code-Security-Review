@@ -5,6 +5,14 @@ the code diff using a large language model via OpenRouter, scores security and
 quality risks against OWASP Top 10, and sends Slack alerts when the risk score
 exceeds a configurable threshold.
 
+**Features:**
+- 🔍 **Automated Code Review** — AI analyzes every PR for security and quality issues
+- 🚨 **Slack Alerts** — Notifications for high-risk PRs (score ≥ 50)
+- ✅ **Merge Notifications** — Get notified when any PR is merged
+- 🔄 **3-Key Rotation** — Automatic failover for rate limit handling
+- 📊 **OWASP Scoring** — Risk assessment based on OWASP Top 10
+- 💬 **GitHub Comments** — Review posted directly on PRs
+
 ---
 
 ## 📐 Architecture
@@ -394,5 +402,6 @@ MIT — see [LICENSE](LICENSE) for details.
 ---
 
 *Built with [LangGraph](https://github.com/langchain-ai/langgraph) · [OpenRouter](https://openrouter.ai) · [GitHub Actions](https://docs.github.com/en/actions)*
-#   T r i g g e r   r e - r u n  
+#   T r i g g e r   r e - r u n 
+ 
  
