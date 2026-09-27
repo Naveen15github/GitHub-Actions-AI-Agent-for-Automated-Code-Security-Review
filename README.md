@@ -13,7 +13,7 @@
 ---
 
 ## 📸 Project Demo
- 
+  
 ### 1. Pull Requests Triggered for Security Testing
 Three test branches were created to validate high-risk and low-risk code detection:
 
