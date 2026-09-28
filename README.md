@@ -26,7 +26,7 @@ The AI Code Review and PR Merged Notification workflows trigger automatically on
 
 ![Workflow Runs In Progress](https://github.com/Naveen15github/GitHub-Actions-AI-Agent-for-Automated-Code-Security-Review/blob/8e0ade2eff3dba9d246b9b9eb5540b02c2a03cae/screenshots/Screenshot%20(645).png)
 
----
+--- 
 
 ### 3. Successful HIGH RISK TEST — Workflow Run Details
 The agent completed the `feat: add authentication module (HIGH RISK TEST)` run in 3 minutes 14 seconds with a `Success` status:
