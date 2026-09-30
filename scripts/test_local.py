@@ -4,7 +4,7 @@ scripts/test_local.py
 Local end-to-end test runner for the GitHub AI Code Reviewer.
 
 Usage:
-  # Run against a real GitHub PR URL:
+  # Run against a real GitHub PR URL: 
   python scripts/test_local.py https://github.com/owner/repo/pull/42
 
   # Run with a hardcoded sample diff (no GitHub token needed):
