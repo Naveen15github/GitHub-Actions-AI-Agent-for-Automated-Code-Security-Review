@@ -42,7 +42,7 @@ When the risk score exceeds 50, the agent fires a Slack alert with full vulnerab
 
 ---
 
-### 5. All Workflow Runs — End-to-End Success
+### 5. All Workflow Runs — End-to-End Success 
 All 9 workflow runs completed successfully across HIGH RISK, LOW RISK, and merge notification scenarios:
 
 ![All Workflow Runs](https://github.com/Naveen15github/GitHub-Actions-AI-Agent-for-Automated-Code-Security-Review/blob/8e0ade2eff3dba9d246b9b9eb5540b02c2a03cae/screenshots/Screenshot%20(648).png)
